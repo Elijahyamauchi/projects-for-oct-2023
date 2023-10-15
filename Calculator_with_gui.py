@@ -9,7 +9,7 @@ def button_click(event):
             result=str(eval(screen.get()))
             screen.set(result) 
         except:
-            screen.set("hiro is no ea")
+            screen.set("Error")
     elif text=='C':
         screen.set("")
         #this line causes a glith where the user can change the result after the calculation.
