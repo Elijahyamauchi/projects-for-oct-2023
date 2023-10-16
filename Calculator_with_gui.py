@@ -12,13 +12,15 @@ def button_click(event):
             screen.set("Error")
     elif text=='C':
         screen.set("")
-        #this line causes a glith where the user can change the result after the calculation.
     else:
         screen.set(screen.get()+text)
+        #this line causes a glith where the user can change the result after the calculation.
 
 #creates the main aplication window
+height=300
+width=400
 root = tk.Tk()
-root.geometry("300x400")    
+root.geometry(f"{height}x{width}")    
 root.title("Calculator")
 
 #creates the variable that holds the string that the cal will manipulate
@@ -34,13 +36,19 @@ buttons = ["7","8","9","+",
            "4","5","6","-",
            "1","2","3","*",
            "C","0","=","/",]
+
+# I want to tie the height and width variable to the button so that they will fill the space no matter what
+#question one, how do I manipulate the size of the button?
 b=0
 for button in buttons:
-    button=tk.Button(button_Frame,text=button,font="lucida 20 bold")
+    button=tk.Button(button_Frame,text=button,font=f"lucida {height//10} bold")
     button.grid(row=b//4,column=b%4)
     button.bind("<Button-1>", button_click)
     b+=1
 
+for i in range(4):
+    button_Frame.grid_rowconfigure(i, weight=1)
+    button_Frame.grid_columnconfigure(i, weight=1)
 
 
 
